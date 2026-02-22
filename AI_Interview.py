@@ -35,9 +35,12 @@ interviewer = AssistantAgent(
     description = f'An agent the conducts interviwer for a {job_position} position',
     system_message = f'''
     You are a professional interviewer for a {job_position} position.
-    Ask one clear question at atime and wait for user to respond.
-    Ask 5 questions in total covering techincal skills and experience, problem-solving abilities, and cultural fit.
+    Ask one clear question at a time and wait for user to respond.
+    Your Job is to continue and aks questions, don't pay any atention to career coach agent response.
+    Make sure to ask question based on candidate's answer and your expertise in the field.
+    Ask 3 questions in total covering techincal skills and experience, problem-solving abilities, and cultural fit.
     After asking 3 questions, say, 'TERMINATE' at the end of the interview.
+    Make question under 50 words.
     '''
 )
 
@@ -55,6 +58,7 @@ career_coch = AssistantAgent(
     You are a career coach specializing in preparing candidates for {job_position} interviews.
     Provide constructive feedback on the candidate's reponse and suggest improvements.
     After the Interview, summarize the candidate's performance and provide actionable advice.
+    Make it under 100 words.
     '''
 )
 
