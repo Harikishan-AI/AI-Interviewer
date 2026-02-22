@@ -1,2 +1,3 @@
 /.venv/
 .env
+/ai_interview/__pycache__/
