@@ -27,6 +27,7 @@ model_info={
 # 1. Interviewer Agent -> Assistant Agent
 # 2. Interviewee Agent -> UserPorxyAgent
 # 3. Career Coach Agent -> Assistant Agent
+job_position = 'Software Engineer'
 
 interviewer = AssistantAgent(
     name = "Interviewer",
@@ -59,9 +60,15 @@ career_coch = AssistantAgent(
 
 team =  RoundRobinGroupChat(
     participants=[interviewer, candidate, career_coch],
-    termination_condtion = TextMentionTermination(text='TERMINATE'),
+    termination_condition = TextMentionTermination(text='TERMINATE'),
     max_turns = 20
 )
 
 stream = team.run_stream(task='Conducting an interview for a Software ENgineer position')
-Console(stream)
+
+async def main():
+    await Console(stream)
+
+if __name__ == '__main__':
+    import asyncio
+    asyncio.run(main())
