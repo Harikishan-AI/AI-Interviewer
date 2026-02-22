@@ -12,9 +12,9 @@ api_key = os.getenv("OPEN_ROUTER_API_KEY")
 model_client = OpenAIChatCompletionClient(
 base_url="https://openrouter.ai/api/v1",
 api_key=api_key,
-model="arcee-ai/trinity-large-preview:free",    
+model="nvidia/nemotron-3-nano-30b-a3b:free",    
 model_info={
-    "family": "arcee-ai",
+    "family": "nvidia",
     "vision": False,
     "function_calling": True,
     "json_output": True,
@@ -68,7 +68,7 @@ team =  RoundRobinGroupChat(
     max_turns = 20
 )
 
-stream = team.run_stream(task='Conducting an interview for a Software ENgineer position')
+stream = team.run_stream(task='Conducting an interview for a Software Engineer position')
 
 async def main():
     await Console(stream)
